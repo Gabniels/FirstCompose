@@ -1,4 +1,4 @@
-package com.example.allincompose
+package com.example.allincompose.screen.main
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,20 +8,16 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.Button
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.allincompose.screen.creditcard.CreditCardActivity
 import com.example.allincompose.screen.placeholder.PlaceholderActivity
 import com.example.allincompose.ui.theme.AllinComposeTheme
-import com.example.allincompose.utils.ViewUtils.ButtonMenu
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

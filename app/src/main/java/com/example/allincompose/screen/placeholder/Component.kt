@@ -1,4 +1,4 @@
-package com.example.allincompose.view.placeholder
+package com.example.allincompose.screen.placeholder
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -19,19 +19,15 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.allincompose.model.PlaceholderResponse
-import com.example.allincompose.repository.placeholder.PlaceholderRepository
-import com.example.allincompose.screen.placeholder.PlaceholderViewModel
+import com.example.allincompose.ui.theme.softBlue
 
 @Composable
 fun PlaceholderScreen(viewModel: PlaceholderViewModel) {
@@ -53,21 +49,35 @@ fun PlaceholderScreen(viewModel: PlaceholderViewModel) {
 
 @Composable
 fun PlaceholderItem(item: List<PlaceholderResponse>?) {
-    LazyColumn() {
+    val textStyle = TextStyle(
+        fontFamily = FontFamily.Monospace,
+        textAlign = TextAlign.Justify,
+        fontSize = 12.sp,
+        color = Color.White,
+    )
+    LazyColumn(modifier = Modifier.padding(16.dp)) {
         if (!item.isNullOrEmpty()) {
             itemsIndexed(item) { index, item ->
                 Card(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(16.dp)
+                        .padding(10.dp)
                 ) {
                     Column(
                         modifier = Modifier
+                            .background(softBlue)
+                            .fillMaxWidth()
                             .padding(10.dp)
                     ) {
                         Text(
                             text = item.title.toString(),
-                            style = TextStyle(textAlign = TextAlign.Center, fontSize = 14.sp),
+                            style = TextStyle(
+                                fontFamily = FontFamily.Monospace,
+                                textAlign = TextAlign.Justify,
+                                fontSize = 12.sp,
+                                color = Color.White,
+                                fontWeight = FontWeight.Bold
+                            ),
                             textAlign = TextAlign.Center,
                             fontFamily = FontFamily.Monospace,
                             modifier = Modifier.fillMaxWidth()
@@ -75,11 +85,7 @@ fun PlaceholderItem(item: List<PlaceholderResponse>?) {
                         Spacer(modifier = Modifier.height(15.dp))
                         Text(
                             text = item.body.toString(),
-                            style = TextStyle(
-                                fontFamily = FontFamily.Monospace,
-                                textAlign = TextAlign.Justify,
-                                fontSize = 12.sp
-                            )
+                            style = textStyle
                         )
                     }
                 }

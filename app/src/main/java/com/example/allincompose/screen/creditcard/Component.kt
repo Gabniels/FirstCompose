@@ -1,5 +1,6 @@
-package com.example.allincompose.view.creditcard
+package com.example.allincompose.screen.creditcard
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -22,11 +23,12 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.allincompose.model.CreditCardResponse
-import com.example.allincompose.screen.creditcard.CreditCardViewModel
+import com.example.allincompose.ui.theme.softBlue
 
 @Composable
-fun CreditCardScreen(viewModel: CreditCardViewModel) {
+fun CreditCardView(viewModel: CreditCardViewModel) {
     val creditCards by viewModel.creditCards.observeAsState(null)
 
     LaunchedEffect(Unit) {
@@ -46,18 +48,28 @@ fun CreditCardScreen(viewModel: CreditCardViewModel) {
 @Composable
 fun CreditCardItem(creditCards: CreditCardResponse?) {
     val textStyle = TextStyle(
-        color = Color.White, fontWeight = FontWeight.Bold, textAlign = TextAlign.Start
+        color = Color.White,
+        fontWeight = FontWeight.Bold,
+        textAlign = TextAlign.Start,
+        fontSize = 12.sp
     )
 
     Column(
         verticalArrangement = Arrangement.Center,
+        modifier = Modifier.padding(16.dp)
+
     ) {
         Card(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(16.dp)
+                .padding(10.dp)
         ) {
-            Column(modifier = Modifier.padding(10.dp)) {
+            Column(
+                modifier = Modifier
+                    .background(softBlue)
+                    .fillMaxWidth()
+                    .padding(10.dp)
+            ) {
                 Text(text = "Id : " + creditCards?.id.toString(), style = textStyle)
                 Spacer(modifier = Modifier.height(5.dp))
                 Text(text = "Uid : " + creditCards?.uid.toString(), style = textStyle)
