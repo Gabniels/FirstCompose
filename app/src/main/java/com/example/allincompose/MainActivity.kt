@@ -21,6 +21,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.example.allincompose.screen.creditcard.CreditCardActivity
 import com.example.allincompose.screen.placeholder.PlaceholderActivity
 import com.example.allincompose.ui.theme.AllinComposeTheme
+import com.example.allincompose.utils.ViewUtils.ButtonMenu
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,7 +32,7 @@ class MainActivity : ComponentActivity() {
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = Color.Blue,
-                    ) {
+                ) {
                     ListMenu()
                 }
             }
@@ -47,21 +48,19 @@ fun ListMenu() {
         Arrangement.Center,
         Alignment.CenterHorizontally
     ) {
-        Button(onClick = {
-            context.startActivity(Intent(context, CreditCardActivity::class.java))
-        }
-        ) {
-            Text(text = "Credit Card", style = TextStyle(color = Color.White))
-        }
-        Button(
-            onClick = {
+        ButtonMenu(
+            onCLick = {
+                context.startActivity(Intent(context, CreditCardActivity::class.java))
+            }, txt = "Credit Card"
+        )
+
+        ButtonMenu(
+            onCLick = {
                 context.startActivity(Intent(context, PlaceholderActivity::class.java))
-            }) {
-            Text(text = "Json Placeholder", style = TextStyle(color = Color.White))
-        }
+            }, txt = "Json Placeholder"
+        )
     }
 }
-
 
 @Preview(showBackground = true)
 @Composable
