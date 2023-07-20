@@ -1,11 +1,9 @@
 package com.example.allincompose.screen.placeholder
 
 import android.os.Bundle
-import android.provider.CalendarContract.Colors
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
-import androidx.annotation.ColorRes
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -37,7 +35,7 @@ class PlaceholderActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = Color.White
                 ) {
-                    Column() {
+                    Column {
                         Text(
                             text = "List Placeholder",
                             textAlign = TextAlign.Center, style = TextStyle(
