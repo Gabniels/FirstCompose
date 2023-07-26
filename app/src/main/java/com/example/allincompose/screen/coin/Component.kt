@@ -50,7 +50,7 @@ fun CoinItem(item: List<CoinResponse>?) {
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Text(text = item.symbol)
                     Column(modifier = Modifier.padding(20.dp)) {
-                        Text(text = item.name, style = TextStyle())
+                        Text(text = item.name, style = textStyle)
                         Text(text = item.rank.toString())
                     }
                 }
