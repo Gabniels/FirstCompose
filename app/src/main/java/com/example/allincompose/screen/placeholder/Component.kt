@@ -26,6 +26,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.allincompose.components.TextTitleOne
+import com.example.allincompose.components.TextTitleTwo
 import com.example.allincompose.model.PlaceholderResponse
 import com.example.allincompose.ui.theme.softBlue
 
@@ -49,12 +51,6 @@ fun PlaceholderScreen(viewModel: PlaceholderViewModel) {
 
 @Composable
 fun PlaceholderItem(item: List<PlaceholderResponse>?) {
-    val textStyle = TextStyle(
-        fontFamily = FontFamily.Monospace,
-        textAlign = TextAlign.Justify,
-        fontSize = 12.sp,
-        color = Color.White,
-    )
     LazyColumn(modifier = Modifier.padding(16.dp)) {
         if (!item.isNullOrEmpty()) {
             itemsIndexed(item) { index, item ->
@@ -69,24 +65,9 @@ fun PlaceholderItem(item: List<PlaceholderResponse>?) {
                             .fillMaxWidth()
                             .padding(10.dp)
                     ) {
-                        Text(
-                            text = item.title.toString(),
-                            style = TextStyle(
-                                fontFamily = FontFamily.Monospace,
-                                textAlign = TextAlign.Justify,
-                                fontSize = 12.sp,
-                                color = Color.White,
-                                fontWeight = FontWeight.Bold
-                            ),
-                            textAlign = TextAlign.Center,
-                            fontFamily = FontFamily.Monospace,
-                            modifier = Modifier.fillMaxWidth()
-                        )
+                        TextTitleOne(message = item.title.toString(), color = Color.White)
                         Spacer(modifier = Modifier.height(15.dp))
-                        Text(
-                            text = item.body.toString(),
-                            style = textStyle
-                        )
+                        TextTitleTwo(message = item.body.toString())
                     }
                 }
             }

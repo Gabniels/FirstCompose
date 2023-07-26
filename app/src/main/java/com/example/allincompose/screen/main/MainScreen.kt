@@ -15,6 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.allincompose.screen.coin.CoinActivity
 import com.example.allincompose.screen.creditcard.CreditCardActivity
 import com.example.allincompose.screen.placeholder.PlaceholderActivity
 import com.example.allincompose.ui.theme.AllinComposeTheme
@@ -54,6 +55,10 @@ fun ListMenu() {
             onCLick = {
                 context.startActivity(Intent(context, PlaceholderActivity::class.java))
             }, txt = "Json Placeholder"
+        )
+        ButtonMenu(
+            onCLick = { context.startActivity(Intent(context, CoinActivity::class.java)) },
+            txt = "List CryptoCoin"
         )
     }
 }

@@ -1,5 +1,6 @@
 package com.example.allincompose.network
 
+import com.example.allincompose.service.CoinService
 import com.example.allincompose.service.CreditCardService
 import com.example.allincompose.service.PlaceholderService
 import retrofit2.Retrofit
@@ -13,13 +14,16 @@ object RetrofitInstance {
             .build()
     }
 
-
     val creditCardService: CreditCardService by lazy {
         getClient("https://random-data-api.com/api/v2/").create(CreditCardService::class.java)
     }
 
     val placeholderService: PlaceholderService by lazy {
         getClient("https://jsonplaceholder.typicode.com/").create(PlaceholderService::class.java)
+    }
+
+    val coinService: CoinService by lazy {
+        getClient("https://api.coinpaprika.com/v1/").create(CoinService::class.java)
     }
 
 }

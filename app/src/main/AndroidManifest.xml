@@ -15,6 +15,11 @@
         android:theme="@style/Theme.AllinCompose"
         tools:targetApi="31">
         <activity
+            android:name=".screen.coin.CoinActivity"
+            android:exported="false"
+            android:label="@string/title_activity_coin"
+            android:theme="@style/Theme.AllinCompose" />
+        <activity
             android:name=".screen.placeholder.PlaceholderActivity"
             android:exported="false"
             android:label="@string/title_activity_placeholder"

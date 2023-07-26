@@ -1,31 +1,27 @@
-package com.example.allincompose.screen.placeholder
+package com.example.allincompose.screen.coin
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.example.allincompose.components.TextTitle
-import com.example.allincompose.ui.theme.AllinComposeTheme
-import com.example.allincompose.ui.theme.softBlue
+import com.example.allincompose.screen.coin.ui.theme.AllinComposeTheme
 
-class PlaceholderActivity : ComponentActivity() {
+class CoinActivity : ComponentActivity() {
 
-    private val viewModel: PlaceholderViewModel by viewModels()
+    private val viewModel: CoinViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,9 +30,9 @@ class PlaceholderActivity : ComponentActivity() {
                 // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
-                    color = Color.White
+                    color = MaterialTheme.colorScheme.background
                 ) {
-                    PlaceholderContent(viewModel = viewModel)
+                    CoinContent(viewModel = viewModel)
                 }
             }
         }
@@ -44,16 +40,17 @@ class PlaceholderActivity : ComponentActivity() {
 }
 
 @Composable
-fun PlaceholderContent(viewModel: PlaceholderViewModel) {
-    Column {
-        TextTitle(message = "List Placeholder")
-        PlaceholderScreen(viewModel = viewModel)
+fun CoinContent(viewModel: CoinViewModel) {
+    Column() {
+        TextTitle(message = "List Crypto Coin")
+        ListCoinScreen(viewModel = viewModel)
     }
 }
 
+
 @Preview(showBackground = true)
 @Composable
-fun GreetingPreview3() {
+fun GreetingPreview4() {
     AllinComposeTheme {
 
     }
