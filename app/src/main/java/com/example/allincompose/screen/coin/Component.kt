@@ -13,6 +13,7 @@ import androidx.compose.material3.Divider
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
@@ -26,13 +27,13 @@ import com.example.allincompose.model.CoinResponse
 @Composable
 fun ListCoinScreen(viewModel: CoinViewModel) {
 
-    val dataCoin by viewModel.coins.observeAsState(null)
+    val dataCoin by viewModel.coins.collectAsState()
 
     LaunchedEffect(Unit) {
         viewModel.getCoins()
     }
 
-    if (dataCoin == null) {
+    if (dataCoin.isEmpty()) {
         Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
             CircularProgressIndicator(color = Color.Blue)
         }
